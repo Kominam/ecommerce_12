@@ -19,7 +19,7 @@ RSpec.describe Suggest, type: :model do
     end
   end
 
-  it "init status methods" do
+  it "init suggest status" do
     suggest = FactoryGirl.create :suggest
     expect(suggest.status).to eql "processing"
   end

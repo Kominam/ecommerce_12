@@ -38,6 +38,7 @@ RSpec.describe Admin::SuggestsController, type: :controller do
 
     it "update suggest successfully" do
       put :update, id: @suggest.id, status: :accepted
+      @suggest.reload
       expect(@suggest.status).to eq("accepted")
       expect(flash[:success]). to be_present
       expect(response).to redirect_to "sample_path"

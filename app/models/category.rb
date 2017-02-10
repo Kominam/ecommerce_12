@@ -7,11 +7,8 @@ class Category < ApplicationRecord
   def update_category id
     current_right = last_right
     if id.empty?
-      if current_right.nil?
-        self.update(lft: 1, rgt: 2, depth: 0)
-      else
-        self.update(lft: current_right + 1, rgt: current_right + 2, depth: 0)
-      end
+      current_right.nil? ? update(lft: 1, rgt: 2, depth: 0)
+        : update(lft: current_right + 1, rgt: current_right + 2, depth: 0)
     else
       parent_category = Category.find_by id: id
       Category.where("rgt >= ?", parent_category.rgt)
